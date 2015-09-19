@@ -1,12 +1,8 @@
 class PinsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @pins = Pin.all.order('created_at DESC')
-  end
-
-  def show
-    @pin = Pin.find(params[:id])
   end
 
   def new
@@ -17,7 +13,7 @@ class PinsController < ApplicationController
     pin = Pin.new(pin_params)
     pin.user = current_user
     if pin.save
-      redirect_to pin, notice: "El pin fue creado exitosamente"
+      redirect_to root_path, notice: "El pin fue creado exitosamente"
     else
       render :new
     end
@@ -25,6 +21,6 @@ class PinsController < ApplicationController
 
   private
     def pin_params
-      params.require(:pin).permit(:title, :description)
+      params.require(:pin).permit(:title, :image_url)
     end
 end
