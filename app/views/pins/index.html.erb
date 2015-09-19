@@ -4,6 +4,9 @@
       <div class="panel-body">
         <img src="<%= pin.image_url %>" alt="<%= pin.title %>">
         <h2><%= pin.title %></h2>
+        <% if pin.user %>
+        <p class="user">Submitted by <%= pin.user.email %></p>
+        <% end %>
       </div>
     </div>
   <% end %>
