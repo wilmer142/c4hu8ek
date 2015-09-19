@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919133603) do
+ActiveRecord::Schema.define(version: 20150919143540) do
 
   create_table "pins", force: :cascade do |t|
     t.integer  "user_id"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20150919133603) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "encrypted_token"
+    t.string   "encrypted_token_salt"
+    t.string   "encrypted_token_iv"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
