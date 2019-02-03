@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def basic_auth
+  def token_auth
   	#binding.pry
   	email = request.headers['HTTP_X_USER_EMAIL']
   	token = request.headers['HTTP_X_API_TOKEN']
