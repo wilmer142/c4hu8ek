@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     if user
 	    if user.api_token == token
 	      sign_in user
+	      head 200
 	    else
 	    	head 401
 	    end
