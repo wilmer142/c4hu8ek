@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def basic_auth
+  	#binding.pry
   	email = request.headers['HTTP_X_USER_EMAIL']
-  	email = request.headers['HTTP_X_API_TOKEN']
+  	token = request.headers['HTTP_X_API_TOKEN']
     user = User.find_by_email(email)
     if user
 	    if user.api_token == token
