@@ -15,5 +15,6 @@ class ApplicationController < ActionController::Base
 	    end
 	  else
 	  	head 401
+	  end
   end
 end
