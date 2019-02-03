@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   after_initialize :generate_token
 
+  has_secure_token :auth_token
+
   private
     def generate_token
       self.api_token ||= SecureRandom.hex if new_record?

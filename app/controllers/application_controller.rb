@@ -7,11 +7,13 @@ class ApplicationController < ActionController::Base
   	email = request.headers['HTTP_X_USER_EMAIL']
   	email = request.headers['HTTP_X_API_TOKEN']
     user = User.find_by_email(email)
-    if user.auth_token == token
-      sign_in user
-    else
-    	head 401
-    end
-	  
+    if user
+	    if user.api_token == token
+	      sign_in user
+	    else
+	    	head 401
+	    end
+	  else
+	  	head 401
   end
 end
